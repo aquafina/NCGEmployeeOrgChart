@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:panelStretchLayout id="pt_psl1" endWidth="104px"
+                           inlineStyle="background-color:Gray;" topHeight="85px"
+                           bottomHeight="28px">
+      <f:facet name="center">
+        <af:panelSplitter id="pt_ps1"
+                          inlineStyle="width:inherit; height:inherit; background-color:white;"
+                          orientation="horizontal" splitterPosition="278"
+                          disabled="false">
+          <f:facet name="second">
+            <af:facetRef facetName="content"/>
+          </f:facet>
+          <f:facet name="first">
+            <af:facetRef facetName="search"/>
+          </f:facet>
+        </af:panelSplitter>
+      </f:facet>
+      <f:facet name="top">
+        <af:panelStretchLayout id="pt_psl2" endWidth="275px" startWidth="488px"
+                               inlineStyle='background-image:url("header_background.jpg");'>
+          <f:facet name="start">
+            <af:panelGroupLayout id="pt_pgl1" layout="vertical">
+              <af:outputLabel value="Employee Hierarchy" id="pt_ol1"
+                              inlineStyle="margin-left:10px; font-size:40.0px; color:rgb(233,233,233); font-family:Batang;"/>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="end">
+            <af:panelGroupLayout id="pt_pgl2" layout="vertical">
+              <af:spacer width="10" height="50" id="pt_s2"/>
+              <af:panelGroupLayout id="pt_pgl3" layout="horizontal">
+                <af:outputLabel value="Logged in as: #{sessionScope.userName}"
+                                id="pt_ol2"
+                                inlineStyle="color:white; font-weight:bold;"/>
+                <af:spacer width="20" height="10" id="pt_s3"/>
+                
+                <af:goLink text="Home" id="pt_gl3" inlineStyle="color:white;"
+                visible="false"
+                           destination="http://prodapp.nishat.net:8001/OA_HTML/OA.jsp?OAFunc=OAHOMEPAGE"/>
+                           
+                           <af:commandLink text="home" id="pt_csl1" 
+                inlineStyle="color:white;"
+                                action="#{HandlerBean.homeLink}"/>
+                           
+                           
+                <af:spacer width="8" height="10" id="pt_s4"/>
+                <af:commandLink text="Logout" id="pt_cl1" 
+                inlineStyle="color:white; font-weight:bold;"
+                                action="#{HandlerBean.logoutFromHTD}"/>
+                <af:goLink text="Logout" id="pt_gl3d"
+                           inlineStyle="color:white; font-weight:bold;"
+                           visible="false"
+                           destination="http://prodapp.nishat.net:8001/OA_HTML/OALogout.jsp?menu=Y"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelStretchLayout>
+      </f:facet>
+      <f:facet name="bottom">
+        <af:panelStretchLayout id="pt_psl3"
+                               inlineStyle="background-color:#0D6EC7;">
+          <f:facet name="center">
+            <af:panelGroupLayout layout="scroll"
+                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                 id="pt_pgl4">
+              <af:panelGroupLayout id="pt_pgl5" layout="vertical"
+                                   halign="center"
+                                   inlineStyle="margin-top:10.0px">
+                <h:outputText value="Copyrights reserved © Nishat Chunian Limited"
+                              id="pt_ot1"
+                              style="color:white; font-weight:bold;"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="start"/>
+          <f:facet name="end"/>
+        </af:panelStretchLayout>
+      </f:facet>
+    </af:panelStretchLayout>
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>HTDSalesPlanningTemplate</display-name>
+        <facet>
+          <facet-name>content</facet-name>
+        </facet>
+        <facet>
+          <facet-name>search</facet-name>
+        </facet>
+      </component>
+    </af:xmlContent>
+  </af:pageTemplateDef>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:HandlerBean-->
+</jsp:root>

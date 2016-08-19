@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/ApplicationTemplate.jspx" id="pt1">
+          <f:facet name="content">
+            <af:group id="g1">
+              <af:panelGroupLayout layout="vertical" id="pgl2">
+                <af:panelHeader text="VO_EmpOrgChart1" id="ph2">
+                  <af:panelFormLayout id="pfl1">
+                    <af:panelLabelAndMessage label="#{bindings.HierarchyName.hints.label}"
+                                             id="plam5">
+                      <af:outputText value="#{bindings.HierarchyName.inputValue}"
+                                     id="ot4"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.ParentPositionId.hints.label}"
+                                             id="plam3">
+                      <af:outputText value="#{bindings.ParentPositionId.inputValue}"
+                                     id="ot13">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ParentPositionId.format}"/>
+                      </af:outputText>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.FullNameParent.hints.label}"
+                                             id="plam7">
+                      <af:outputText value="#{bindings.FullNameParent.inputValue}"
+                                     id="ot3"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.ParentPersonId.hints.label}"
+                                             id="plam4">
+                      <af:outputText value="#{bindings.ParentPersonId.inputValue}"
+                                     id="ot8">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ParentPersonId.format}"/>
+                      </af:outputText>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.ParentPosition.hints.label}"
+                                             id="plam9">
+                      <af:outputText value="#{bindings.ParentPosition.inputValue}"
+                                     id="ot10"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.SubordinatePositionId.hints.label}"
+                                             id="plam2">
+                      <af:outputText value="#{bindings.SubordinatePositionId.inputValue}"
+                                     id="ot7">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.SubordinatePositionId.format}"/>
+                      </af:outputText>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.ChildPosition.hints.label}"
+                                             id="plam1">
+                      <af:outputText value="#{bindings.ChildPosition.inputValue}"
+                                     id="ot5"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.FullNameChild.hints.label}"
+                                             id="plam6">
+                      <af:outputText value="#{bindings.FullNameChild.inputValue}"
+                                     id="ot14"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.ChildPersonId.hints.label}"
+                                             id="plam8">
+                      <af:outputText value="#{bindings.ChildPersonId.inputValue}"
+                                     id="ot12">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ChildPersonId.format}"/>
+                      </af:outputText>
+                    </af:panelLabelAndMessage>
+                    <f:facet name="footer">
+                      <af:panelGroupLayout layout="horizontal" id="pgl3">
+                        <af:commandButton actionListener="#{bindings.First.execute}"
+                                          text="First"
+                                          disabled="#{!bindings.First.enabled}"
+                                          partialSubmit="true" id="cb1"/>
+                        <af:commandButton actionListener="#{bindings.Previous.execute}"
+                                          text="Previous"
+                                          disabled="#{!bindings.Previous.enabled}"
+                                          partialSubmit="true" id="cb4"/>
+                        <af:commandButton actionListener="#{bindings.Next.execute}"
+                                          text="Next"
+                                          disabled="#{!bindings.Next.enabled}"
+                                          partialSubmit="true" id="cb2"/>
+                        <af:commandButton actionListener="#{bindings.Last.execute}"
+                                          text="Last"
+                                          disabled="#{!bindings.Last.enabled}"
+                                          partialSubmit="true" id="cb3"/>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                  </af:panelFormLayout>
+                </af:panelHeader>
+                <af:panelHeader text="VO_EmpOrgChart2" id="ph1">
+                  <af:table rows="#{bindings.VO_EmpOrgChart2.rangeSize}"
+                            fetchSize="#{bindings.VO_EmpOrgChart2.rangeSize}"
+                            emptyText="#{bindings.VO_EmpOrgChart2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            var="row"
+                            value="#{bindings.VO_EmpOrgChart2.collectionModel}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.VO_EmpOrgChart2.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.VO_EmpOrgChart2.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1">
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.HierarchyName.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.HierarchyName.name}"
+                               sortable="false" id="c2">
+                      <af:outputText value="#{row.HierarchyName}" id="ot9"/>
+                    </af:column>
+                     
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.ParentPositionId.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.ParentPositionId.name}"
+                               sortable="false" id="c6">
+                      <af:outputText value="#{row.ParentPositionId}" id="ot11">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.VO_EmpOrgChart2.hints.ParentPositionId.format}"/>
+                      </af:outputText>
+                    </af:column>
+                     
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.FullNameParent.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.FullNameParent.name}"
+                               sortable="false" id="c4">
+                      <af:outputText value="#{row.FullNameParent}" id="ot1"/>
+                    </af:column>
+                     
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.ParentPersonId.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.ParentPersonId.name}"
+                               sortable="false" id="c1">
+                      <af:outputText value="#{row.ParentPersonId}" id="ot6">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.VO_EmpOrgChart2.hints.ParentPersonId.format}"/>
+                      </af:outputText>
+                    </af:column>
+                     
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.ParentPosition.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.ParentPosition.name}"
+                               sortable="false" id="c3">
+                      <af:outputText value="#{row.ParentPosition}" id="ot2"/>
+                    </af:column>
+                     
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.SubordinatePositionId.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.SubordinatePositionId.name}"
+                               sortable="false" id="c9">
+                      <af:outputText value="#{row.SubordinatePositionId}"
+                                     id="ot15">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.VO_EmpOrgChart2.hints.SubordinatePositionId.format}"/>
+                      </af:outputText>
+                    </af:column>
+                     
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.ChildPosition.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.ChildPosition.name}"
+                               sortable="false" id="c5">
+                      <af:outputText value="#{row.ChildPosition}" id="ot17"/>
+                    </af:column>
+                     
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.FullNameChild.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.FullNameChild.name}"
+                               sortable="false" id="c7">
+                      <af:outputText value="#{row.FullNameChild}" id="ot16"/>
+                    </af:column>
+                     
+                    <af:column headerText="#{bindings.VO_EmpOrgChart2.hints.ChildPersonId.label}"
+                               sortProperty="#{bindings.VO_EmpOrgChart2.hints.ChildPersonId.name}"
+                               sortable="false" id="c8">
+                      <af:outputText value="#{row.ChildPersonId}" id="ot18">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.VO_EmpOrgChart2.hints.ChildPersonId.format}"/>
+                      </af:outputText>
+                    </af:column>
+                  </af:table>
+                </af:panelHeader>
+              </af:panelGroupLayout>
+            </af:group>
+          </f:facet>
+          <f:facet name="search"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

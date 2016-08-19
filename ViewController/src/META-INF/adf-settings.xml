@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adf-settings xmlns="http://xmlns.oracle.com/adf/settings">
+  <adf-controller-config xmlns="http://xmlns.oracle.com/adf/controller/config">  
+     <lifecycle>  
+       <phase-listener>  
+         <listener-id>customPageListener</listener-id>  
+         <class>nishat.net.PageListener</class>  
+       </phase-listener>  
+     </lifecycle>
+   </adf-controller-config>
+</adf-settings>

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/ApplicationTemplate.jspx" id="pt1">
+          <f:facet name="content">
+            <dvt:hierarchyViewer id="hv1" var="node"
+                                 value="#{bindings.VO_EmpOrgChart1.treeModel}"
+                                 selectionListener="#{bindings.VO_EmpOrgChart1.treeModel.makeCurrent}"
+                                 layout="hier_vert_top"
+                                 styleClass="AFStretchWidth" summary="HVIEW"
+                                 displayLevelsAncestor="1">
+              <dvt:link linkType="orthogonalRounded" id="l1"/>
+              <dvt:search value="#{bindings.department_name.inputValue}"
+                          actionListener="#{bindings.ExecuteWithParams.execute}"
+                          id="search1" initialBehavior="initExpanded">
+                <f:facet name="end">
+                  <af:commandLink text="Advanced"
+                                  styleClass="AFHVAdvancedSearchLinkStyle"
+                                  id="cl1"/>
+                </f:facet>
+                <dvt:searchResults id="searchResults1"
+                                   value="#{bindings.VOSearchHierarchy.collectionModel}"
+                                   emptyText="#{bindings.VOSearchHierarchy.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                   fetchSize="#{bindings.VOSearchHierarchy.rangeSize}"
+                                   resultListener="#{bindings.ExecuteWithParams1.execute}"
+                                   var="resultRow">
+                  <af:setPropertyListener type="action"
+                                          from="#{resultRow.HierarchyName}"
+                                          to="#{bindings.HIERARCHY_NAME.inputValue}"/>
+                  <f:facet name="content">
+                    <af:panelGroupLayout layout="horizontal"
+                                         id="pgl3"
+                                         styleClass="AFHVSearchResultsPanelStyle">
+                      <af:panelLabelAndMessage label="#{bindings.ExecuteWithParams.hints.HierarchyName.label}"
+                                               id="plam12">
+                        <af:outputText value="#{resultRow.HierarchyName}"
+                                       styleClass="AFHVSearchResultsItemTextStyle"
+                                       id="ot6"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="#{bindings.ExecuteWithParams.hints.FullNameChild.label}"
+                                               id="plam10">
+                        <af:outputText value="#{resultRow.FullNameChild}"
+                                       styleClass="AFHVSearchResultsItemTextStyle"
+                                       id="ot13"/>
+                      </af:panelLabelAndMessage>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </dvt:searchResults>
+              </dvt:search>
+              <dvt:node type="nishat.net.VO_EmpOrgChart" width="350"
+                        height="300" id="n1" shape="rect"
+                        clickBehavior="expandCollapse">
+                <f:facet name="zoom100">
+                  <af:panelGroupLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                       layout="horizontal" valign="middle"
+                                       id="pgl2">
+                    <af:panelGroupLayout layout="vertical" halign="center"
+                                         styleClass="AFStretchWidth" id="pgl1"
+                                         visible="true">
+                      <af:panelLabelAndMessage label="Employee Name:"
+                                               id="plam5"
+                                               labelStyle="color:#0b1d2e;">
+                        <af:outputText value="#{node.FullNameChild}"
+                                       id="ot5"
+                                       inlineStyle="color:#0d6ec7; font-weight:200; font-size:large;"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="EmployeePosition"
+                                               id="plam1"
+                                               labelStyle="color:#0b1d2e;">
+                        <af:outputText value="#{node.ChildPosition}"
+                                       id="ot4"
+                                       inlineStyle="font-weight:bold; color:#0d6ec7; font-size:medium;"/>
+                      </af:panelLabelAndMessage>
+                      <af:spacer height="5" id="s1"/>
+                    </af:panelGroupLayout>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </dvt:node>
+            </dvt:hierarchyViewer>
+          </f:facet>
+          <f:facet name="search"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>
